@@ -1,4 +1,8 @@
 
+using AudiobookPlanner.DataAccess.Data;
+using AudiobookPlanner.DataAccess.Repositories;
+using Microsoft.EntityFrameworkCore;
+
 namespace AudiobookPlanner.API
 {
   public class Program
@@ -13,6 +17,13 @@ namespace AudiobookPlanner.API
 
       builder.Services.AddEndpointsApiExplorer();
       builder.Services.AddSwaggerGen();
+
+      //DbContext
+      builder.Services.AddDbContext<AudiobookPlannerContext>(options =>
+        options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+      //Repositories
+      builder.Services.AddScoped<IAudioBookRepository, AudioBookRepository>();
 
       var app = builder.Build();
 
