@@ -1,3 +1,5 @@
 <Solution>
+  <Project Path="AudiobookPlanner.API/AudiobookPlanner.API.csproj" />
+  <Project Path="AudiobookPlanner.Blazor/AudiobookPlanner.Blazor.csproj" />
   <Project Path="AudiobookPlanner.DataAccess/AudiobookPlanner.DataAccess.csproj" />
 </Solution>
