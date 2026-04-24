@@ -11,7 +11,7 @@ namespace AudiobookPlanner.DataAccess.Models
     public string? Description { get; set; }
     public int LengthInMinutes { get; set; }
     public DateOnly ReleaseDate { get; set; }
-    public int PublisherId { get; set; }
+    public int? PublisherId { get; set; }
     public Publisher? Publisher { get; set; }
     public int? SeriesId { get; set; }
     public Series? Series { get; set; }

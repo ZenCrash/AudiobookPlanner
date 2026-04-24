@@ -12,6 +12,9 @@ namespace AudiobookPlanner.Blazor
       builder.Services.AddRazorComponents()
           .AddInteractiveServerComponents();
 
+      // Register HttpClient for API calls
+      builder.Services.AddScoped(sp => new HttpClient() { BaseAddress = new Uri("https://localhost:5234/") });
+
       var app = builder.Build();
 
       // Configure the HTTP request pipeline.

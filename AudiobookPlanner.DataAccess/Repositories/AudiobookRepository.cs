@@ -9,28 +9,12 @@ namespace AudiobookPlanner.DataAccess.Repositories
     public async Task<Audiobook?> GetAsync(int id)
     {
       return await context.Audiobooks
-        .Include(x => x.Publisher)
-        .Include(x => x.Authors)
-        .Include(x => x.Narrators)
-        .Include(x => x.Languages)
-        .Include(x => x.Series)
-        .Include(x => x.Genres)
-        .Include(x => x.Tags)
-        .Include(x => x.Ratings)
         .FirstOrDefaultAsync(x => x.Id == id);
     }
 
     public async Task<ICollection<Audiobook>> GetAllAsync()
     {
       return await context.Audiobooks
-        .Include(x => x.Publisher)
-        .Include(x => x.Authors)
-        .Include(x => x.Narrators)
-        .Include(x => x.Languages)
-        .Include(x => x.Series)
-        .Include(x => x.Genres)
-        .Include(x => x.Tags)
-        .Include(x => x.Ratings)
         .ToListAsync();
     }
 

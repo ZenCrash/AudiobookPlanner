@@ -6,7 +6,7 @@ namespace AudiobookPlanner.API.Controllers
 {
   [ApiController]
   [Route("api/[controller]")]
-  public class AudiobookController(IAudioBookRepository repository) : ControllerBase
+  public class AudiobooksController(IAudioBookRepository repository) : ControllerBase
   {
     [HttpGet("{id}")]
     public async Task<ActionResult<Audiobook>> Get(int id)
