@@ -1,6 +1,5 @@
 
 using AudiobookPlanner.DataAccess.Data;
-using AudiobookPlanner.DataAccess.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 namespace AudiobookPlanner.API
@@ -22,8 +21,8 @@ namespace AudiobookPlanner.API
       builder.Services.AddDbContext<AudiobookPlannerContext>(options =>
         options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-      //Repositories
-      builder.Services.AddScoped<IAudioBookRepository, AudioBookRepository>();
+      //Project Services
+      builder.Services.AddManagers();
 
       var app = builder.Build();
 
