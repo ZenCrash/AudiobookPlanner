@@ -1,5 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using AudiobookPlanner.API.API.Audiobooks.Models;
 using AudiobookPlanner.API.DbModels;
+using AudiobookPlanner.DataAccess.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace AudiobookPlanner.API.Data
 {

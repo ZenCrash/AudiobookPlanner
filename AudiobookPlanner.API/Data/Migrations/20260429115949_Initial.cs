@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace AudiobookPlanner.DataAccess.Data.Migrations
+namespace AudiobookPlanner.API.Data.Migrations
 {
     /// <inheritdoc />
     public partial class Initial : Migration
@@ -125,11 +125,11 @@ namespace AudiobookPlanner.DataAccess.Data.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Title = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
-                    BookNo = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    BookNo = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
                     Description = table.Column<string>(type: "nvarchar(2000)", maxLength: 2000, nullable: true),
                     LengthInMinutes = table.Column<int>(type: "int", nullable: false),
                     ReleaseDate = table.Column<DateOnly>(type: "date", nullable: false),
-                    PublisherId = table.Column<int>(type: "int", nullable: false),
+                    PublisherId = table.Column<int>(type: "int", nullable: true),
                     SeriesId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
@@ -139,8 +139,7 @@ namespace AudiobookPlanner.DataAccess.Data.Migrations
                         name: "FK_Audiobooks_Publishers_PublisherId",
                         column: x => x.PublisherId,
                         principalTable: "Publishers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_Audiobooks_Series_SeriesId",
                         column: x => x.SeriesId,

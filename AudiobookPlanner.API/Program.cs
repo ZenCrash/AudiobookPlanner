@@ -1,5 +1,4 @@
-
-using AudiobookPlanner.DataAccess.Data;
+using AudiobookPlanner.API.Data;
 using Microsoft.EntityFrameworkCore;
 
 namespace AudiobookPlanner.API

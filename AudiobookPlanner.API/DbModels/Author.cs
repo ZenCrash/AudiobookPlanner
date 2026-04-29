@@ -1,18 +1,19 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using AudiobookPlanner.API.API.Audiobooks.Models;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace AudiobookPlanner.DataAccess.Models
+namespace AudiobookPlanner.API.DbModels
 {
-  public class Genre
+  public class Author
   {
     public int Id { get; set; }
     public string? Name { get; set; }
     public ICollection<Audiobook> Audiobooks { get; set; } = [];
   }
 
-  public class GenreDbMap : IEntityTypeConfiguration<Genre>
+  public class AuthorDbMap : IEntityTypeConfiguration<Author>
   {
-    public void Configure(EntityTypeBuilder<Genre> builder)
+    public void Configure(EntityTypeBuilder<Author> builder)
     {
       builder.HasKey(x => x.Id);
       builder.Property(x => x.Name)
@@ -24,7 +25,7 @@ namespace AudiobookPlanner.DataAccess.Models
       //Audiobooks
       builder
         .HasMany(x => x.Audiobooks)
-        .WithMany(x => x.Genres);
+        .WithMany(x => x.Authors);
     }
   }
 }

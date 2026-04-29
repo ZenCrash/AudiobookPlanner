@@ -1,7 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using AudiobookPlanner.API.API.Audiobooks.Models;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace AudiobookPlanner.DataAccess.Models
+namespace AudiobookPlanner.DataAccess.Models  
 {
   public class Tag
   {
