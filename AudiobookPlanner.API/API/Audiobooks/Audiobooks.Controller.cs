@@ -14,7 +14,7 @@ namespace AudiobookPlanner.API.API.Audiobooks
     {
       if (id == null)
         return BadRequest("Id cannot be null");
-      var result = await manager.GetByIdAsync(id);
+      var result = await manager.GetAsync(id);
       if (result == null)
         return NotFound();
       return Ok(result);

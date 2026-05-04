@@ -1,4 +1,7 @@
+using AudiobookPlanner.Blazor.Application;
 using AudiobookPlanner.Blazor.Components;
+using AudiobookPlanner.Blazor.Infrastructure;
+using AudiobookPlanner.Blazor.Infrastructure.Services;
 
 namespace AudiobookPlanner.Blazor
 {
@@ -13,7 +16,17 @@ namespace AudiobookPlanner.Blazor
           .AddInteractiveServerComponents();
 
       // Register HttpClient for API calls
-      builder.Services.AddScoped(sp => new HttpClient() { BaseAddress = new Uri("https://localhost:5234/") });
+      //builder.Services.AddScoped(sp => new HttpClient() { BaseAddress = new Uri("https://localhost:5234/") });
+
+      builder.Services.AddServices(builder.Configuration);
+      builder.Services.AddManagers();
+
+      //Culture settings
+      var localizationSection = builder.Configuration.GetSection("Localization");
+      var defaultCulture = localizationSection["DefaultCulture"];
+      var supportedCultures = localizationSection
+        .GetSection("SupportedCultures")
+        .Get<string[]>();
 
       var app = builder.Build();
 

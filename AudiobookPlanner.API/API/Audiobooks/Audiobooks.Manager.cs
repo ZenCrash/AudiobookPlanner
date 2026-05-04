@@ -6,7 +6,7 @@ namespace AudiobookPlanner.API.API.Audiobooks
 {
   public class AudiobooksManager(AudiobookPlannerContext context) : IAudiobooksManager
   {
-    public async Task<AudiobookDto?> GetByIdAsync(int id)
+    public async Task<AudiobookDto?> GetAsync(int id)
     {
       var result = await context.Audiobooks
         .FirstOrDefaultAsync(a => a.Id == id);

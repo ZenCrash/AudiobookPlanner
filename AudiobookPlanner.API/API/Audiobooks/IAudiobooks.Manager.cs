@@ -6,7 +6,7 @@ namespace AudiobookPlanner.API.API.Audiobooks
 {
   public interface IAudiobooksManager
   {
-    Task<AudiobookDto?> GetByIdAsync(int id);
+    Task<AudiobookDto?> GetAsync(int id);
     Task<AudiobookDto?> GetByNameAsync(string name);
     Task<ICollection<AudiobookDto>> GetAllAsync();
     Task<AudiobookDto> CreateAsync(AudiobookDto audiobookDto);

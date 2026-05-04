@@ -1,0 +1,11 @@
+﻿using AudiobookPlanner.Blazor.Application.Models;
+
+namespace AudiobookPlanner.Blazor.Application.Dtos
+{
+  public class TagDto
+  {
+    public int Id { get; set; }
+    public string? Name { get; set; }
+    public ICollection<AudiobookDto> Audiobooks { get; set; } = [];
+  }
+}

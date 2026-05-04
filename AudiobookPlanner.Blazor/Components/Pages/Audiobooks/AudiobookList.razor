@@ -1,0 +1,49 @@
+﻿@using AudiobookPlanner.Blazor.Application.Views.Audiobooks
+
+@inject IAudiobooksManager AudiobooksManager
+
+@page "/Audiobooks"
+
+<h3>AudiobookList</h3>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Title</th>
+      <th scope="col">Book Number</th>
+      <th scope="col">Description</th>
+      <th scope="col">Length</th>
+      <th scope="col">ReleaseDate</th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach (var audiobook in _audiobooks)
+    {
+      <tr>
+        <th scope="row">@audiobook.Id</th>
+        <td>@audiobook.Title</td>
+        <td>@audiobook.BookNo</td>
+        <td>@audiobook.Description</td>
+        <td>@audiobook.LengthInMinutes</td>
+        <td>@audiobook.ReleaseDate</td>
+      </tr>
+    }
+  </tbody>
+</table>
+
+@code {
+  private List<Audiobook> _audiobooks = [];
+
+  protected override async Task OnInitializedAsync()
+  {
+    _audiobooks = await GetAudiobooks();
+  }
+
+  private async Task<List<Audiobook>> GetAudiobooks()
+  {
+    var audiobooks = await AudiobooksManager.GetAllAsync();
+    return audiobooks.ToList();
+  }
+
+}
