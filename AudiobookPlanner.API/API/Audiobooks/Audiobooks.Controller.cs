@@ -1,11 +1,16 @@
 ﻿using AudiobookPlanner.API.API.Audiobooks.Models;
+using AudiobookPlanner.API.API.Audiobooks.Resources;
 using AudiobookPlanner.DataAccess.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Localization;
+using System.Globalization;
+
+
 namespace AudiobookPlanner.API.API.Audiobooks
 {
   [ApiController]
   [Route("api/[controller]")]
-  public class AudiobooksController(IAudiobooksManager manager) : ControllerBase
+  public class AudiobooksController(IAudiobooksManager manager, IStringLocalizer<Localization> localizer) : ControllerBase
   {
     [HttpGet("{id:int}")]
     [ProducesResponseType(typeof(AudiobookDto), StatusCodes.Status200OK)]
@@ -13,7 +18,7 @@ namespace AudiobookPlanner.API.API.Audiobooks
     public async Task<ActionResult<AudiobookDto>> Get(int id)
     {
       if (id == null)
-        return BadRequest("Id cannot be null");
+        return BadRequest(localizer["Common.IsCannotBeNull"]);
       var result = await manager.GetAsync(id);
       if (result == null)
         return NotFound();
@@ -26,7 +31,7 @@ namespace AudiobookPlanner.API.API.Audiobooks
     public async Task<ActionResult<AudiobookDto>> GetByName(string name)
     {
       if (string.IsNullOrWhiteSpace(name))
-        return BadRequest("Id cannot be null");
+        return BadRequest(localizer["Common.IsCannotBeNull"]);
       var result = await manager.GetByNameAsync(name);
       if (result == null)
         return NotFound();
@@ -47,7 +52,7 @@ namespace AudiobookPlanner.API.API.Audiobooks
     public async Task<ActionResult<AudiobookDto>> Create(AudiobookDto audiobook)
     {
       if (audiobook == null)
-        return BadRequest("Audiobook cannot be null");
+        return BadRequest(localizer["Common.AudiobookCannotBeNull"]);
       var result = await manager.CreateAsync(audiobook);
       return CreatedAtAction(nameof(Get), new { id = result.Id }, result);
     }
@@ -58,9 +63,9 @@ namespace AudiobookPlanner.API.API.Audiobooks
     public async Task<ActionResult<AudiobookDto>> Update(int id, AudiobookDto audiobook)
     {
       if (id == null)
-        return BadRequest("Id cannot be null");
+        return BadRequest(localizer["Common.IsCannotBeNull"]);
       if (audiobook == null)
-        return BadRequest("Audiobook cannot be null");
+        return BadRequest(localizer["Common.AudiobookCannotBeNull"]);
 
       var result = await manager.UpdateAsync(id, audiobook);
       if (result == null)
@@ -75,7 +80,7 @@ namespace AudiobookPlanner.API.API.Audiobooks
     public async Task<IActionResult> Delete(int id)
     {
       if (id == null)
-        return BadRequest("Id cannot be null");
+        return BadRequest(localizer["Common.IsCannotBeNull"]);
       var deleted = await manager.DeleteAsync(id);
       if (!deleted)
         return NotFound();
