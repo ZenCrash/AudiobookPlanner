@@ -6,6 +6,5 @@ namespace AudiobookPlanner.API.Dtos
   {
     public int Id { get; set; }
     public string? Name { get; set; }
-    public ICollection<AudiobookDto> Audiobooks { get; set; } = [];
   }
 }

@@ -1,16 +1,8 @@
-﻿using AudiobookPlanner.API.API.Audiobooks.Models;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace AudiobookPlanner.API.DbModels
+namespace AudiobookPlanner.API.API.Publishers.Models
 {
-  public class Publisher
-  {
-    public int Id { get; set; }
-    public string? Name { get; set; }
-    public ICollection<Audiobook> Audiobooks { get; set; } = [];
-  }
-
   public class PublisherDbMap : IEntityTypeConfiguration<Publisher>
   {
     public void Configure(EntityTypeBuilder<Publisher> builder)

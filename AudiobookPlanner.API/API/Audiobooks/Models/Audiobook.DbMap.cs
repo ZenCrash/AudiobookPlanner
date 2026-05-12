@@ -1,4 +1,8 @@
-﻿using AudiobookPlanner.API.DbModels;
+﻿using AudiobookPlanner.API.API.Authors.Models;
+using AudiobookPlanner.API.API.Genres.Models;
+using AudiobookPlanner.API.API.Languages.Models;
+using AudiobookPlanner.API.API.Narrators.Models;
+using AudiobookPlanner.API.DbModels;
 using AudiobookPlanner.DataAccess.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;

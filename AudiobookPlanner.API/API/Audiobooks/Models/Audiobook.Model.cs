@@ -1,4 +1,10 @@
-﻿using AudiobookPlanner.API.DbModels;
+﻿using AudiobookPlanner.API.API.Authors.Models;
+using AudiobookPlanner.API.API.Genres.Models;
+using AudiobookPlanner.API.API.Languages.Models;
+using AudiobookPlanner.API.API.Narrators.Models;
+using AudiobookPlanner.API.API.Publishers.Models;
+using AudiobookPlanner.API.API.Series.Models;
+using AudiobookPlanner.API.DbModels;
 using AudiobookPlanner.DataAccess.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
@@ -16,7 +22,7 @@ namespace AudiobookPlanner.API.API.Audiobooks.Models
     public int? PublisherId { get; set; }
     public Publisher? Publisher { get; set; }
     public int? SeriesId { get; set; }
-    public Series? Series { get; set; }
+    public Series.Models.Series? Series { get; set; }
     public ICollection<Author> Authors { get; set; } = [];
     public ICollection<Narrator> Narrators { get; set; } = [];
     public ICollection<Language> Languages { get; set; } = [];

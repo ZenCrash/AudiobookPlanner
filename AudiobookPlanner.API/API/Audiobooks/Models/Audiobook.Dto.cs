@@ -1,4 +1,10 @@
-﻿using AudiobookPlanner.API.DbModels;
+﻿using AudiobookPlanner.API.API.Authors.Models;
+using AudiobookPlanner.API.API.Genres.Models;
+using AudiobookPlanner.API.API.Languages.Models;
+using AudiobookPlanner.API.API.Narrators.Models;
+using AudiobookPlanner.API.API.Publishers.Models;
+using AudiobookPlanner.API.API.Series.Models;
+using AudiobookPlanner.API.DbModels;
 using AudiobookPlanner.API.Dtos;
 using AudiobookPlanner.DataAccess.Models;
 

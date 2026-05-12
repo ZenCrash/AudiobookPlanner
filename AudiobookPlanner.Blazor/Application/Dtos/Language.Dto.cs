@@ -6,6 +6,5 @@ namespace AudiobookPlanner.Blazor.Application.Dtos
   {
     public int Id { get; set; }
     public string? LanguageName { get; set; }
-    public ICollection<AudiobookDto> Audiobooks { get; set; } = [];
   }
 }

@@ -1,16 +1,8 @@
-﻿using AudiobookPlanner.API.API.Audiobooks.Models;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace AudiobookPlanner.API.DbModels
+namespace AudiobookPlanner.API.API.Genres.Models
 {
-  public class Genre
-  {
-    public int Id { get; set; }
-    public string? Name { get; set; }
-    public ICollection<Audiobook> Audiobooks { get; set; } = [];
-  }
-
   public class GenreDbMap : IEntityTypeConfiguration<Genre>
   {
     public void Configure(EntityTypeBuilder<Genre> builder)

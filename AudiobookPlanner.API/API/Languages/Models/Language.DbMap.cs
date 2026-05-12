@@ -1,16 +1,8 @@
-﻿using AudiobookPlanner.API.API.Audiobooks.Models;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace AudiobookPlanner.API.DbModels
+namespace AudiobookPlanner.API.API.Languages.Models
 {
-  public class Language
-  {
-    public int Id { get; set; }
-    public string? LanguageName { get; set; }
-    public ICollection<Audiobook> Audiobooks { get; set; } = [];
-  }
-
   public class LanguageDbMap : IEntityTypeConfiguration<Language>
   {
     public void Configure(EntityTypeBuilder<Language> builder)

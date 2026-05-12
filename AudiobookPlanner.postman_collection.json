@@ -14,7 +14,13 @@
           "name": "GetAll - Audiobooks",
           "request": {
             "method": "GET",
-            "header": [],
+            "header": [
+              {
+                "key": "Accept-Language",
+                "value": "{{language}}",
+                "type": "text"
+              }
+            ],
             "url": {
               "raw": "{{Base Url}}/api/Audiobooks",
               "host": [
@@ -32,7 +38,13 @@
           "name": "Get - Audiobook by id",
           "request": {
             "method": "GET",
-            "header": [],
+            "header": [
+              {
+                "key": "Accept-Language",
+                "value": "{{language}}",
+                "type": "text"
+              }
+            ],
             "url": {
               "raw": "{{Base Url}}/api/Audiobooks/::id",
               "host": [
@@ -57,7 +69,13 @@
           "name": "GetByName - Audiobook by Title",
           "request": {
             "method": "GET",
-            "header": [],
+            "header": [
+              {
+                "key": "Accept-Language",
+                "value": "{{language}}",
+                "type": "text"
+              }
+            ],
             "url": {
               "raw": "{{Base Url}}/api/Audiobooks/byName/:name",
               "host": [
@@ -83,7 +101,13 @@
           "name": "Update - Audiobook",
           "request": {
             "method": "PUT",
-            "header": [],
+            "header": [
+              {
+                "key": "Accept-Language",
+                "value": "{{language}}",
+                "type": "text"
+              }
+            ],
             "body": {
               "mode": "raw",
               "raw": "{\r\n    \"id\": 1,\r\n    \"title\": \"The Great Gatsby 3\",\r\n    \"bookNo\": \"1\",\r\n    \"description\": \"A novel about the American dream and the decadence of the 1920s.\",\r\n    \"lengthInMinutes\": 300,\r\n    \"releaseDate\": \"2020-01-01\",\r\n    \"publisherId\": null,\r\n    \"publisher\": null,\r\n    \"seriesId\": null,\r\n    \"series\": null,\r\n    \"authors\": [],\r\n    \"narrators\": [],\r\n    \"languages\": [],\r\n    \"genres\": [],\r\n    \"tags\": [],\r\n    \"ratings\": []\r\n}",
@@ -117,7 +141,13 @@
           "name": "Create - Audiobook",
           "request": {
             "method": "POST",
-            "header": [],
+            "header": [
+              {
+                "key": "Accept-Language",
+                "value": "{{language}}",
+                "type": "text"
+              }
+            ],
             "body": {
               "mode": "raw",
               "raw": "{\r\n    \"id\": 0,\r\n    \"title\": \"Awesomeness the movie\",\r\n    \"bookNo\": \"1\",\r\n    \"description\": \"Skiooy the book\",\r\n    \"lengthInMinutes\": 300,\r\n    \"releaseDate\": \"2020-01-01\",\r\n    \"publisherId\": null,\r\n    \"publisher\": null,\r\n    \"seriesId\": null,\r\n    \"series\": null,\r\n    \"authors\": [],\r\n    \"narrators\": [],\r\n    \"languages\": [],\r\n    \"genres\": [],\r\n    \"tags\": [],\r\n    \"ratings\": []\r\n}",
@@ -144,7 +174,13 @@
           "name": "Delete - Audiobook",
           "request": {
             "method": "DELETE",
-            "header": [],
+            "header": [
+              {
+                "key": "Accept-Language",
+                "value": "{{language}}",
+                "type": "text"
+              }
+            ],
             "url": {
               "raw": "{{Base Url}}/api/Audiobooks/:id",
               "host": [

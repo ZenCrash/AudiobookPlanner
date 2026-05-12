@@ -1,0 +1,68 @@
+﻿@using AudiobookPlanner.Blazor.Application.Views.Audiobooks
+@inject NavigationManager NavManager
+@inject IAudiobooksManager AudiobooksManager
+
+@page "/Audiobooks/{id}"
+@rendermode @(new InteractiveServerRenderMode(prerender: false))
+
+@if (SelectedAudiobook == null)
+  return;
+
+<h3>AudiobookDetails</h3>
+<EditForm EditContext="@EditContext">
+  <DataAnnotationsValidator />
+  
+  @* Title *@
+  <label>@(nameof(Audiobook.Title))</label>
+  <InputText type="text" class="form-control" @bind-Value="SelectedAudiobook.Title" placeholder="@(nameof(Audiobook.Title))" />
+  
+  @* BookNo *@
+  <label>@(nameof(Audiobook.BookNo))</label>
+  <InputText type="text" class="form-control" @bind-Value="SelectedAudiobook.BookNo" placeholder="@(nameof(Audiobook.BookNo))" />
+  
+  @* Description *@
+  <label>@(nameof(Audiobook.Description))</label>
+  <InputText type="text" class="form-control" @bind-Value="SelectedAudiobook.Description" placeholder="@(nameof(Audiobook.Description))" />
+  
+  @* LengthInMinutes *@
+  <label>@(nameof(Audiobook.LengthInMinutes))</label>
+  <InputNumber class="form-control" @bind-Value="SelectedAudiobook.LengthInMinutes" placeholder="@(nameof(Audiobook.LengthInMinutes))" />
+  
+  @* ReleaseDate *@
+  <label>@(nameof(Audiobook.ReleaseDate))</label>
+  <InputDate class="form-control" @bind-Value="SelectedAudiobook.ReleaseDate" placeholder="@(nameof(Audiobook.ReleaseDate))" />
+  
+  @* Publisher *@
+  <label>@(nameof(Audiobook.Title))</label>
+
+  
+  @* Series *@
+  <label>@(nameof(Audiobook.Title))</label>
+
+</EditForm>
+
+@code {
+  [Parameter] public string Id { get; set; } = null!;
+  public Audiobook? SelectedAudiobook { get; set; }
+  private EditContext EditContext { get; set; } = null!;
+  public bool IsNew { get; set; }
+
+  protected override async Task OnInitializedAsync()
+  {
+    if (Id.ToLower() == "new")
+      IsNew = true;
+    
+    SelectedAudiobook = await GetAudiobook();
+    EditContext = new EditContext(SelectedAudiobook);
+  }
+
+  public async Task<Audiobook> GetAudiobook()
+  {
+    if(IsNew)
+      return new Audiobook();
+
+    var audiobookId = int.Parse(Id);
+    return await AudiobooksManager.GetAsync(audiobookId) ?? new Audiobook();
+  }
+
+}

@@ -1,6 +1,6 @@
 ﻿using AudiobookPlanner.Blazor.Application.Dtos;
 
-namespace AudiobookPlanner.Blazor.Infrastructure.Services
+namespace AudiobookPlanner.Blazor.Infrastructure.Services.Interfaces
 {
   public interface IAudiobooksService
   {

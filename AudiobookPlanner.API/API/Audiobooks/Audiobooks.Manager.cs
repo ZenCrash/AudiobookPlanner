@@ -9,6 +9,13 @@ namespace AudiobookPlanner.API.API.Audiobooks
     public async Task<AudiobookDto?> GetAsync(int id)
     {
       var result = await context.Audiobooks
+        .Include(a => a.Authors)
+        .Include(a => a.Genres)
+        .Include(a => a.Tags)
+        .Include(a => a.Narrators)
+        .Include(a => a.Languages)
+        .Include(a => a.Publisher)
+        .Include(a => a.Series)
         .FirstOrDefaultAsync(a => a.Id == id);
       if(result == null)
         return null;
@@ -19,6 +26,13 @@ namespace AudiobookPlanner.API.API.Audiobooks
     public async Task<AudiobookDto?> GetByNameAsync(string name)
     {
       var result = await context.Audiobooks
+        .Include(a => a.Authors)
+        .Include(a => a.Genres)
+        .Include(a => a.Tags)
+        .Include(a => a.Narrators)
+        .Include(a => a.Languages)
+        .Include(a => a.Publisher)
+        .Include(a => a.Series)
         .FirstOrDefaultAsync(a => a.Title == name);
       if (result == null)
         return null;
@@ -29,6 +43,13 @@ namespace AudiobookPlanner.API.API.Audiobooks
     public async Task<ICollection<AudiobookDto>> GetAllAsync()
     {
       var result = await context.Audiobooks
+        .Include(a => a.Authors)
+        .Include(a => a.Genres)
+        .Include(a => a.Tags)
+        .Include(a => a.Narrators)
+        .Include(a => a.Languages)
+        .Include(a => a.Publisher)
+        .Include(a => a.Series)
         .ToListAsync();
       return result.ToDtos();
     }
@@ -50,20 +71,17 @@ namespace AudiobookPlanner.API.API.Audiobooks
 
       audiobookDto.ToModel(resultModel);
       await context.SaveChangesAsync();
-
       return resultModel.ToDto();
     }
 
     public async Task<bool> DeleteAsync(int id)
     {
       var entity = await context.Audiobooks.FindAsync(id);
-
       if (entity == null)
         return false;
 
       context.Audiobooks.Remove(entity);
       await context.SaveChangesAsync();
-
       return true;
     }
   }

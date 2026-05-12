@@ -1,16 +1,8 @@
-﻿using AudiobookPlanner.API.API.Audiobooks.Models;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace AudiobookPlanner.API.DbModels
+namespace AudiobookPlanner.API.API.Narrators.Models
 {
-  public class Narrator
-  {
-    public int Id { get; set; }
-    public string? Name { get; set; }
-    public ICollection<Audiobook> Audiobooks { get; set; } = [];
-  }
-
   public class NarratorDbMap : IEntityTypeConfiguration<Narrator>
   {
     public void Configure(EntityTypeBuilder<Narrator> builder)

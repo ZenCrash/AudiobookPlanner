@@ -1,17 +1,8 @@
-﻿using AudiobookPlanner.API.API.Audiobooks.Models;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace AudiobookPlanner.API.DbModels
+namespace AudiobookPlanner.API.API.Series.Models
 {
-  public class Series
-  {
-    public int Id { get; set; }
-    public string? Title { get; set; }
-    public string? Description { get; set; }
-    public ICollection<Audiobook> Audiobooks { get; set; } = [];
-  }
-
   public class SeriesDbMap : IEntityTypeConfiguration<Series>
   {
     public void Configure(EntityTypeBuilder<Series> builder)

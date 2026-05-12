@@ -1,5 +1,4 @@
-﻿
-using AudiobookPlanner.Blazor.Infrastructure.Services;
+﻿using AudiobookPlanner.Blazor.Infrastructure.Services.Interfaces;
 
 namespace AudiobookPlanner.Blazor.Application.Views.Audiobooks
 {

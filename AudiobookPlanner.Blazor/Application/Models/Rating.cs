@@ -8,6 +8,5 @@ namespace AudiobookPlanner.Blazor.Application.Models
     public string? Source { get; set; }
     public double RatingAvg { get; set; }
     public int RatingCount { get; set; }
-    public ICollection<Audiobook> Audiobooks { get; set; } = [];
   }
 }
